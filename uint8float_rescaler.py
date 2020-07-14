@@ -50,6 +50,6 @@ if __name__ == '__main__':
     args = get_args_conv_rescale()
     print(args)
     data = hdf5.load(args.input)
-    data[args.imgnames] = data[args.imgnames] * (args.high - args.low) + \
-        args.low
+    data[args.imgnames] = data[args.imgnames] * \
+        (args.high - args.low) / 255.0 + args.low
     hdf5.save(args.output, data)
